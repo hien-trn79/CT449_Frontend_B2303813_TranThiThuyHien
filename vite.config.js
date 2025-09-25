@@ -14,5 +14,12 @@ export default defineConfig({
   },
   server: {
     port: 3001,
+    proxy: {
+      "/api": {
+        // prefix de nhan dien request can proxy
+        target: "http://localhost:8080",
+        changeOrigin: true, // cho phep doi port thanh cong cua backend
+      },
+    },
   },
 });

@@ -1,7 +1,27 @@
-<script setup></script>
+<script>
+import ContactBook from './views/ContactBook.vue';
+import AppHeader from './components/AppHeader.vue';
+
+export default {
+  components: {
+    AppHeader,
+  }
+}
+</script>
 
 <template>
-  <h1>Hello VueJS</h1>
+  <div id="app">
+    <AppHeader></AppHeader>
+
+    <div class="container mt-3">
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
 
-<style scoped></style>
+<style>
+.page {
+  max-width: 400px;
+  margin: auto;
+}
+</style>
