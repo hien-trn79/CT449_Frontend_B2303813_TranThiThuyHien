@@ -125,7 +125,15 @@ export default {
                     <h4>Chi tiết liên hệ
                         <i class="fas fa-address-card"></i>
                     </h4>
-                    <ContactCard :contact="activeContact"></ContactCard>
+                    <ContactCard :contact="activeContact" />
+                    <router-link :to="{
+                        name: 'contact.edit',
+                        params: { id: activeContact._id },
+                    }">
+                        <span class="mt-2 badge badge-warning">
+                            <i class="fas fa-edit"></i> Hiệu chỉnh</span>
+                    </router-link>
+
                 </div>
             </div>
         </div>
@@ -145,7 +153,7 @@ export default {
 .contactCard {
     grid-area: contactCard;
     width: 100%;
-    ;
+    min-width: 300px;
 }
 
 .list_button {
@@ -155,5 +163,9 @@ export default {
 .contactList {
     grid-area: contactList;
     min-width: 500px;
+}
+
+.badge {
+    color: blue;
 }
 </style>

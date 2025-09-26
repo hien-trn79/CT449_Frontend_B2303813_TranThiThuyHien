@@ -1,6 +1,7 @@
 import { createWebHashHistory, createRouter } from "vue-router";
 import ContactBook from "@/views/ContactBook.vue";
 import NotFound from "@/views/NotFound.vue";
+import ContactEdit from "@/components/ContactEdit.vue";
 
 const routes = [
   {
@@ -12,6 +13,12 @@ const routes = [
     path: "/:pathMatch(.*)*",
     name: "Not Found",
     component: NotFound,
+  },
+  {
+    path: "/contact/:id",
+    name: "contact.edit",
+    component: ContactEdit,
+    props: true,
   },
 ];
 
