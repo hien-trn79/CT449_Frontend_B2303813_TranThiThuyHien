@@ -2,6 +2,7 @@ import { createWebHashHistory, createRouter } from "vue-router";
 import ContactBook from "@/views/ContactBook.vue";
 import NotFound from "@/views/NotFound.vue";
 import ContactEdit from "@/components/ContactEdit.vue";
+import ContactCreate from "@/components/ContactCreate.vue";
 
 const routes = [
   {
@@ -18,6 +19,12 @@ const routes = [
     path: "/contact/:id",
     name: "contact.edit",
     component: ContactEdit,
+    props: true,
+  },
+  {
+    path: "/contact/",
+    name: "contact.add",
+    component: ContactCreate,
     props: true,
   },
 ];

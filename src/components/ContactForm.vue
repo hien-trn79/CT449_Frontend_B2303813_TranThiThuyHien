@@ -47,7 +47,7 @@ export default {
         Cancel() {
             const reply = window.confirm('Bạn sẽ không lưu những thay đổi ? Bạn chắc chắc rời khỏi trang web?');
             if (!reply) return false;
-            return this.$router.push({ name: 'conatactbook' })
+            return this.$router.push({ name: 'contactbook' })
         }
     }
 
@@ -73,7 +73,7 @@ export default {
         </div>
         <div class="form-group">
             <label for="phone">Điện thoại</label>
-            <Field name="phone" type="tel" class="form-control" v-model="contactLocal.phone" />
+            <Field name="phone" type="tel" class="form-control" v-model="contactLocal.numberPhone" />
             <ErrorMessage name="phone" class="error-feedback" />
         </div>
         <div class="form-group form-check">
