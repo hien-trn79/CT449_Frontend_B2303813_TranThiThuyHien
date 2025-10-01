@@ -1,0 +1,38 @@
+.page_contact {
+    display: grid;
+    grid-template-areas: 'contactList contactCard';
+    grid-template-columns: 2.5fr 1.5fr;
+    column-gap: 24px;
+    min-width: 90%;
+    justify-content: center;
+}
+
+.contactCard {
+    grid-area: contactCard;
+    width: 100%;
+    min-width: 300px;
+}
+
+.list_button {
+    display: flex;
+    margin-top: 24px;
+}
+
+.contactList {
+    grid-area: contactList;
+    min-width: 500px;
+}
+
+.badge {
+    font-size: var(--font-size-sm);
+    color: blue;
+    padding: 4px 8px;
+    background-color: rgba(113, 191, 250, 0.432);
+    border-radius: 12px;
+}
+
+.btn {
+    font-size: var(--font-size-md);
+    border-radius: 7px;
+    margin: 0px 8px;
+}

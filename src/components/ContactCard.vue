@@ -9,27 +9,42 @@ export default {
 <template>
     <div class="contactCard-detail">
         <div class="p-1">
-            <strong>Tên:</strong>
+            <label>Tên:</label>
             {{ contact.name }}
         </div>
 
         <div class="p-1">
-            <strong>Email:</strong>
+            <label>Email:</label>
             {{ contact.email }}
         </div>
 
         <div class="p-1">
-            <strong>Số điện thoại:</strong>
+            <label>Số điện thoại:</label>
             {{ contact.numberPhone }}
         </div>
 
         <div class="p-1">
             <strong>Liên hệ yêu thích:</strong>
-            <i v-if="contact.favorite" class="fas fa-check"></i>
+            <i v-if="contact.favorite" class="fa-solid fa-heart favorite-icon"></i>
             <i v-else class="fas fa-times"></i>
         </div>
     </div>
 
 </template>
 
-<style></style>
+<style>
+label {
+    font-size: var(--font-size-md);
+    font-weight: bold;
+    padding-right: 8px;
+}
+
+.p-1 {
+    font-size: var(--font-size-md);
+}
+
+.favorite-icon {
+    padding: 0px 8px;
+    color: red;
+}
+</style>

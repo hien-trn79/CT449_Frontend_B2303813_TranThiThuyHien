@@ -57,28 +57,28 @@ export default {
 <template>
     <Form @submit="submitContact" :validation-schema="contactFormSchema">
         <div class="form-group">
-            <label for="name">Tên</label>
+            <label class="form-label" for="name">Tên</label>
             <Field name="name" type="text" class="form-control" v-model="contactLocal.name" />
             <ErrorMessage name="name" class="error-feedback" />
         </div>
         <div class="form-group">
-            <label for="email">E-mail</label>
+            <label class="form-label" for="email">E-mail</label>
             <Field name="email" type="email" class="form-control" v-model="contactLocal.email" />
             <ErrorMessage name="email" class="error-feedback" />
         </div>
         <div class="form-group">
-            <label for="address">Địa chỉ</label>
+            <label class="form-label" for="address">Địa chỉ</label>
             <Field name="address" type="text" class="form-control" v-model="contactLocal.address" />
             <ErrorMessage name="address" class="error-feedback" />
         </div>
         <div class="form-group">
-            <label for="phone">Điện thoại</label>
+            <label class="form-label" for="phone">Điện thoại</label>
             <Field name="phone" type="tel" class="form-control" v-model="contactLocal.numberPhone" />
             <ErrorMessage name="phone" class="error-feedback" />
         </div>
         <div class="form-group form-check">
             <input name="favorite" type="checkbox" class="form-check-input" v-model="contactLocal.favorite" />
-            <label for="favorite" class="form-check-label">
+            <label for="favorite" class="form-check-label form-label">
                 <strong>Liên hệ yêu thích</strong>
             </label>
         </div>
@@ -93,3 +93,16 @@ export default {
         </div>
     </Form>
 </template>
+
+<style>
+.form-label {
+    display: block;
+    padding: 8px 0px;
+}
+
+
+.form-check-input {
+    font-size: 1.6rem;
+    margin-right: 8px;
+}
+</style>

@@ -24,9 +24,15 @@ export default {
 </template>
 
 <style>
+.list-group-item {
+    font-size: var(--font-size-md);
+    padding: 8px 16px;
+}
+
 .list-group-item:hover {
     background-color: #eeeeeea4;
     cursor: pointer;
+    color: var(--text-black);
 }
 
 .list-group-item:active {

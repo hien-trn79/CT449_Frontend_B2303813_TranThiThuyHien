@@ -88,14 +88,14 @@ export default {
 </script>
 
 <template>
-    <div class="page row">
-        <div class="col-md-10">
+    <div class="contactbook-main">
+        <div class="input-search">
             <InputSearch v-model="searchText"></InputSearch>
         </div>
 
-        <div class="page_contact">
+        <div class="page_contact mt-4">
             <div class="mt-3 col-md-6 contactList">
-                <h4>Danh bạ
+                <h4 class="title">Danh bạ
                     <i class="fas fa-address-book"></i>
                 </h4>
                 <ContactList v-if="filteredContactsCount > 0" :contacts="filteredContacts"
@@ -103,17 +103,17 @@ export default {
                 </ContactList>
                 <p v-else>Không có liên hệ nào.</p>
 
-                <div class="mt-3 col justify-content-around align-items-center list_button">
+                <div class="col justify-content-around align-items-center list_button">
 
-                    <button class="btn btn-sm btn-primary" @click="refreshList()">
+                    <button class="btn btn-md btn-primary" @click="refreshList()">
                         <i class="fas fa-redo"></i>Làm mới
                     </button>
 
-                    <button class="btn btn-sm btn-success" @click="goToAddContact()">
+                    <button class="btn btn-md btn-success" @click="goToAddContact()">
                         <i class="fas fa-plus"></i>Thêm mới
                     </button>
 
-                    <button class="btn btn-sm btn-danger" @click="removeAllContacts()">
+                    <button class="btn btn-md btn-danger" @click="removeAllContacts()">
                         <i class="fas fa-trash"></i>Xóa tất cả
                     </button>
 
@@ -122,7 +122,7 @@ export default {
 
             <div class="mt-3 col-md-6 contactCard">
                 <div v-if="activeContact">
-                    <h4>Chi tiết liên hệ
+                    <h4 class="title">Chi tiết liên hệ
                         <i class="fas fa-address-card"></i>
                     </h4>
                     <ContactCard :contact="activeContact" />
@@ -141,31 +141,5 @@ export default {
 </template>
 
 <style>
-.page_contact {
-    display: grid;
-    grid-template-areas: 'contactList contactCard';
-    grid-template-columns: 2.5fr 1.5fr;
-    column-gap: 24px;
-    min-width: 90%;
-    justify-content: center;
-}
-
-.contactCard {
-    grid-area: contactCard;
-    width: 100%;
-    min-width: 300px;
-}
-
-.list_button {
-    display: flex;
-}
-
-.contactList {
-    grid-area: contactList;
-    min-width: 500px;
-}
-
-.badge {
-    color: blue;
-}
+@import url('/assets/contactbook.css');
 </style>
