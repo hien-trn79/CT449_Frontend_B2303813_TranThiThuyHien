@@ -6,7 +6,7 @@ export default {
     emits: ["submit", "update:modelValue"],
     methods: {
         updateModelValue(e) {
-            this.$emit("update: modelValue", e.target.value);
+            this.$emit("update:modelValue", e.target.value);
         },
 
         submit() {
@@ -18,7 +18,6 @@ export default {
 </script>
 
 <template>
-
     <div class="input-group">
         <input type="text" name="input-text" id="input-text" class="form-control" placeholder="Nhập thông tin tìm kiếm"
             :value="modelValue" @click="submit" @keyup.enter="submit" @input="updateModelValue" />
@@ -30,7 +29,6 @@ export default {
             </button>
         </div>
     </div>
-
 </template>
 
 <style>

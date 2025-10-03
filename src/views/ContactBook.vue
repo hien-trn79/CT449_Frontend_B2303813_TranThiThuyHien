@@ -101,7 +101,7 @@ export default {
                 <ContactList v-if="filteredContactsCount > 0" :contacts="filteredContacts"
                     v-model:activeIndex="activeIndex">
                 </ContactList>
-                <p v-else>Không có liên hệ nào.</p>
+                <p v-else class="notContact">Không có liên hệ nào.</p>
 
                 <div class="col justify-content-around align-items-center list_button">
 

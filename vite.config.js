@@ -13,7 +13,7 @@ export default defineConfig({
     },
   },
   server: {
-    port: 3001,
+    port: 3001, // đổi cổng
     proxy: {
       "/api": {
         // prefix de nhan dien request can proxy

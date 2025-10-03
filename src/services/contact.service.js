@@ -20,6 +20,10 @@ class contactService {
     return (await this.api.delete("/")).data;
   }
 
+  async getAllFavorite() {
+    return (await this.api.get("/favorite")).data;
+  }
+
   async get(id) {
     return (await this.api.get(`/${id}`)).data;
   }
