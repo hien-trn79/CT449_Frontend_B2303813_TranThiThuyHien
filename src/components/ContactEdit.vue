@@ -1,9 +1,11 @@
 <script>
 import ContactForm from "@/components/ContactForm.vue";
+import AvatarUser from "./AvatarUser.vue";
 import ContactService from "@/services/contact.service";
 export default {
     components: {
         ContactForm,
+        AvatarUser
     },
     props: {
         id: { type: String, required: true },
@@ -12,6 +14,8 @@ export default {
         return {
             contact: null,
             message: "",
+            edit: true,
+            file: {}
         };
     },
     methods: {
@@ -31,9 +35,20 @@ export default {
                 });
             }
         },
+
+        getFileFromChild(file) {
+            this.file = file;
+        },
+
         async updateContact(data) {
             try {
-                await ContactService.update(this.contact._id, data);
+                // Điều chỉnh trở về dạng form data
+                let formData = new FormData();
+                formData = await data;
+                // cập nhật thêm 1 trường mới key = file
+                formData.file = this.file;
+                // gọi service update
+                await ContactService.update(this.contact._id, formData);
                 alert('Liên hệ được cập nhật thành công.');
                 this.$router.push({ name: "contactbook" });
             } catch (error) {
@@ -55,12 +70,16 @@ export default {
         this.getContact(this.id);
         this.message = "";
     },
+
 };
 </script>
 
 <template>
     <div v-if="contact" class="page">
         <h4 class="title">Hiệu chỉnh Liên hệ</h4>
+        <div class="edit-img">
+            <AvatarUser :edit="edit" @file="getFileFromChild" :contact="contact" />
+        </div>
         <ContactForm :contact="contact" @submit:contact="updateContact" @delete:contact="deleteContact" />
         <p>{{ message }}</p>
     </div>
@@ -70,5 +89,11 @@ export default {
 <style>
 .form-group {
     padding: 8px;
+}
+
+.edit-img {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
 }
 </style>

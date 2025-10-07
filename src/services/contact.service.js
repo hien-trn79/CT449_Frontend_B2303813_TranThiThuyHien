@@ -1,8 +1,9 @@
-import createApiClient from "./api.service.js";
+import { jsonClient, formClient } from "./api.service.js";
 
 class contactService {
   constructor(baseUrl = "/api/contacts") {
-    this.api = createApiClient(baseUrl);
+    this.api = jsonClient(baseUrl);
+    this.formApi = formClient(baseUrl);
   }
 
   // [GET] http://localhost:8080/api/contacts/
@@ -29,7 +30,11 @@ class contactService {
   }
 
   async update(id, data) {
-    return (await this.api.put(`/${id}`, data)).data;
+    return (
+      await this.formApi.put(`/${id}`, data, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+    ).data;
   }
 
   async delete(id) {

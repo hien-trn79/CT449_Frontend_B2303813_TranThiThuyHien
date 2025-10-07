@@ -1,13 +1,27 @@
 <script>
+import AvatarUser from './AvatarUser.vue';
 export default {
+    components: {
+        AvatarUser
+    },
+
     props: {
         contact: { type: Object, required: true }
+    },
+
+    data() {
+        return {
+            edit: false
+        }
     }
 }
 </script>
 
 <template>
     <div class="contactCard-detail">
+        <div class="contactCard_avatar" v-if="contact.file">
+            <AvatarUser :edit="edit" :contact="contact" />
+        </div>
         <div class="p-1">
             <label>Tên:</label>
             {{ contact.name }}
@@ -37,6 +51,10 @@ label {
     font-size: var(--font-size-md);
     font-weight: bold;
     padding-right: 8px;
+}
+
+.contactCard_avatar {
+    margin: 0px 0px 32px 24px;
 }
 
 .p-1 {
