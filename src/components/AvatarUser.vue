@@ -13,7 +13,6 @@ export default {
 
         handlerFileUpload() {
             const file = event.target.files[0];
-            console.log(file);
             if (file) {
                 this.$emit('file', file);
             }
@@ -21,7 +20,7 @@ export default {
     },
 
     mounted() {
-        if (this.contact.file) {
+        if (this.contact) {
             this.userAvatar = this.contact.file;
         }
     }

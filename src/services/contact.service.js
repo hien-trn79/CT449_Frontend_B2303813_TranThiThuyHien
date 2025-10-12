@@ -13,7 +13,11 @@ class contactService {
 
   // [POST] http://localhost:8080/api/contacts/
   async create(data) {
-    return (await this.api.post("/", data)).data;
+    return (
+      await this.formApi.post(`/`, data, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+    ).data;
   }
 
   // [DELETE] http://localhost:8080/api/contacts/
