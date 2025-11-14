@@ -46,6 +46,9 @@ export default {
             const reply = window.confirm('Bạn sẽ không lưu những thay đổi ? Bạn chắc chắc rời khỏi trang web?');
             if (!reply) return false;
             return this.$router.push({ name: 'contactbook' })
+        },
+        UpdateContact() {
+            this.$emit("update-contact", this.contactLocal);
         }
     }
 
@@ -81,7 +84,7 @@ export default {
             </label>
         </div>
         <div class="form-group">
-            <button class="btn btn-primary">Lưu</button>
+            <button class="btn btn-primary" @click.prevent="UpdateContact">Lưu</button>
             <button v-if="contactLocal._id" type="button" class="ml-2 btn btn-danger" @click="deleteContact">
                 Xóa
             </button>
@@ -93,14 +96,74 @@ export default {
 </template>
 
 <style>
+.form-group {
+    margin-bottom: 24px;
+}
+
 .form-label {
     display: block;
     padding: 8px 0px;
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    color: var(--text-primary);
 }
 
+.form-control {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: var(--font-size-md);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    background: var(--bg-white);
+    color: var(--text-primary);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    background: var(--bg-light);
+    border-radius: var(--border-radius);
+    margin-bottom: 24px;
+}
 
 .form-check-input {
-    font-size: 1.6rem;
-    margin-right: 8px;
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.form-check-label {
+    font-size: var(--font-size-md);
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+.error-feedback {
+    color: var(--danger-color);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    margin-top: 6px;
+    display: block;
+    padding-left: 4px;
+}
+
+.form-group>.btn {
+    margin-right: 12px;
+}
+
+.btn.ml-2 {
+    margin-left: 12px;
+    margin-right: 0;
 }
 </style>

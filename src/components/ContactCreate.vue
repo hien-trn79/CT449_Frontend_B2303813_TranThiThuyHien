@@ -24,8 +24,7 @@ export default {
                 let formData = new FormData();
                 formData = await data;
                 formData.file = this.file;
-                console.log(formData);
-                await ContactService.create(this.contact, formData);
+                const result = await ContactService.create(formData);
                 alert('Liên hệ được thêm mới thành công.');
                 this.$router.push({ name: "contactbook" });
             } catch (error) {
@@ -56,14 +55,38 @@ export default {
         <div class="avatar_area">
             <AvatarUser :edit="edit" @file="getFileFromChild" />
         </div>
-        <ContactForm :contact="contact" @submit:contact="createContact" @delete:contact="deleteContact" />
+        <ContactForm :contact="contact" @update-contact="createContact" @delete:contact="deleteContact" />
         <p>{{ message }}</p>
     </div>
 </template>
 
 <style>
+.page {
+    max-width: 90vw;
+    margin: 0 auto;
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--border-color);
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 32px;
+    color: var(--primary-color);
+    justify-content: center;
+}
+
 .avatar_area {
     display: flex;
     justify-content: center;
+    margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+    .page {
+        padding: 24px;
+    }
 }
 </style>

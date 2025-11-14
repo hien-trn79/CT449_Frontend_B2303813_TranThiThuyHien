@@ -142,4 +142,66 @@ export default {
 
 <style>
 @import url('/assets/contactbook.css');
+
+.contactbook-main {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.input-search {
+    animation: slideDown 0.6s ease-out;
+}
+
+.contactList {
+    animation: slideInLeft 0.7s ease-out;
+}
+
+.contactCard {
+    animation: slideInRight 0.7s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 </style>

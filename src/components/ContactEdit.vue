@@ -15,7 +15,7 @@ export default {
             contact: null,
             message: "",
             edit: true,
-            file: {}
+            file: {},
         };
     },
     methods: {
@@ -38,17 +38,19 @@ export default {
 
         getFileFromChild(file) {
             this.file = file;
+
         },
 
         async updateContact(data) {
             try {
-                // Điều chỉnh trở về dạng form data
+                // update data
                 let formData = new FormData();
                 formData = await data;
-                // cập nhật thêm 1 trường mới key = file
+                // Them file anh vao form data
                 formData.file = this.file;
-                // gọi service update
-                await ContactService.update(this.contact._id, formData);
+                const result = await ContactService.update(this.contact._id, formData)
+                console.log(result);
+
                 alert('Liên hệ được cập nhật thành công.');
                 this.$router.push({ name: "contactbook" });
             } catch (error) {
@@ -80,20 +82,39 @@ export default {
         <div class="edit-img">
             <AvatarUser :edit="edit" @file="getFileFromChild" :contact="contact" />
         </div>
-        <ContactForm :contact="contact" @submit:contact="updateContact" @delete:contact="deleteContact" />
+        <ContactForm :contact="contact" @update-contact="updateContact" @delete:contact="deleteContact" />
         <p>{{ message }}</p>
     </div>
 </template>
 
 
 <style>
-.form-group {
-    padding: 8px;
+.page {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--border-color);
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 32px;
+    color: var(--primary-color);
+    justify-content: center;
 }
 
 .edit-img {
     display: flex;
     justify-content: center;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+    .page {
+        padding: 24px;
+    }
 }
 </style>

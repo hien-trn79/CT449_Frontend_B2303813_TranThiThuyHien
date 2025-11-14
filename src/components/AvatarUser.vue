@@ -1,9 +1,10 @@
 <script>
 export default {
-    props: ['edit', 'contact'],
+    props: ['edit', 'contact',],
     data() {
         return {
             userAvatar: '',
+            previewUrl: ''
         }
     },
     methods: {
@@ -13,6 +14,10 @@ export default {
 
         handlerFileUpload() {
             const file = event.target.files[0];
+            console.log("File chọn từ input:", file);
+            // Tạo URL xem trước ảnh
+            const review = URL.createObjectURL(file);
+            this.previewUrl = review;
             if (file) {
                 this.$emit('file', file);
             }
@@ -33,7 +38,8 @@ export default {
             v-if="edit" @change="handlerFileUpload">
         <div class="img_area" @click="upload">
             <i class="fa-solid fa-cloud-arrow-up upload--icon" v-if="edit"></i>
-            <img :src="userAvatar" alt="" class="avatar-img">
+            <img :src="previewUrl" alt="" class="avatar-img" v-if="previewUrl">
+            <img :src="userAvatar" alt="" class="avatar-img" v-else>
         </div>
     </form>
 </template>

@@ -1,42 +1,176 @@
+.contactbook-main {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.input-search {
+    margin-bottom: 24px;
+}
+
 .page_contact {
     display: grid;
     grid-template-areas: 'contactList contactCard';
-    grid-template-columns: 2.5fr 1.5fr;
-    column-gap: 24px;
-    min-width: 90%;
-    justify-content: center;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 32px;
+    width: 100%;
 }
 
 .contactCard {
     grid-area: contactCard;
     width: 100%;
-    min-width: 300px;
+    background: var(--bg-card);
+    border-radius: var(--border-radius-lg);
+    padding: 28px;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+    position: sticky;
+    top: 120px;
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+}
+
+.contactCard:hover {
+    box-shadow: var(--shadow-xl);
+
 }
 
 .list_button {
     display: flex;
-    margin-top: 24px;
+    gap: 12px;
+    margin-top: 32px;
+    flex-wrap: wrap;
 }
 
 .contactList {
     grid-area: contactList;
-    min-width: 500px;
+    background: var(--bg-card);
+    border-radius: var(--border-radius-lg);
+    padding: 28px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    min-width: 40vw;
 }
 
 .notContact {
     font-size: var(--font-size-md);
+    color: var(--text-muted);
+    text-align: center;
+    padding: 48px 24px;
+    background: var(--bg-light);
+    border-radius: var(--border-radius);
+    border: 2px dashed var(--border-color);
 }
 
 .badge {
     font-size: var(--font-size-sm);
-    color: blue;
-    padding: 4px 8px;
-    background-color: rgba(113, 191, 250, 0.432);
-    border-radius: 12px;
+    font-weight: 600;
+    color: var(--text-white);
+    padding: 8px 16px;
+    background: linear-gradient(135deg, var(--warning-color), #f6ad55);
+    border-radius: var(--border-radius-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+    box-shadow: var(--shadow-sm);
+}
+
+.badge:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.badge i {
+    font-size: var(--font-size-md);
 }
 
 .btn {
     font-size: var(--font-size-md);
-    border-radius: 7px;
-    margin: 0px 8px;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: var(--shadow-sm);
+    flex: 1;
+    justify-content: center;
+}
+
+.btn i {
+    font-size: var(--font-size-l);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--info-color), #63b3ed);
+    color: var(--text-white);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #3182ce, var(--info-color));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--success-color), #68d391);
+    color: var(--text-white);
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #38a169, var(--success-color));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--danger-color), #fc8181);
+    color: var(--text-white);
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #e53e3e, var(--danger-color));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+    transform: translateY(0px);
+}
+
+@media (max-width: 1024px) {
+    .page_contact {
+        grid-template-areas: 'contactList' 'contactCard';
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .contactCard {
+        position: static;
+        max-height: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .contactList {
+        padding: 20px;
+    }
+    
+    .contactCard {
+        padding: 20px;
+    }
+    
+    .list_button {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
 }

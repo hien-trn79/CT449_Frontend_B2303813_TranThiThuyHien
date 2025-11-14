@@ -24,18 +24,44 @@ export default {
 </template>
 
 <style>
+.list-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
 .list-group-item {
     font-size: var(--font-size-md);
-    padding: 8px 16px;
+    font-weight: 500;
+    padding: 16px 20px;
+    background: var(--bg-light);
+    border: 2px solid transparent;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text-primary);
 }
 
 .list-group-item:hover {
-    background-color: #eeeeeea4;
-    cursor: pointer;
-    color: var(--text-black);
+    background-color: var(--bg-white);
+    border-color: var(--primary-light);
+    transform: translateX(8px);
+    box-shadow: var(--shadow-md);
+}
+
+.list-group-item.active {
+    background: linear-gradient(140deg, #6791ec 0%, #00098d 100%);
+    color: var(--text-white);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-lg);
+    transform: translateX(8px);
+    font-weight: 600;
 }
 
 .list-group-item:active {
-    transform: scale(0.99);
+    transform: translateX(6px) scale(0.98);
 }
 </style>
